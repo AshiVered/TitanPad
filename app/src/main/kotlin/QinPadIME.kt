@@ -120,7 +120,7 @@ class QinPadIME : InputMethodService() {
         var star = false
         if(digit > 28) {
             when(keyCode) {
-                KeyEvent.KEYCODE_BACK -> return handleBack(event)
+            ///    KeyEvent.KEYCODE_BACK -> return handleBack(event)
                 KeyEvent.KEYCODE_DEL -> return handleDelete(event)
                 KeyEvent.KEYCODE_ALT_RIGHT -> pound = true
                 KeyEvent.KEYCODE_SHIFT_LEFT -> star = true
@@ -170,19 +170,20 @@ class QinPadIME : InputMethodService() {
                 return false
             }
             handleBack(event)
+            return true
         }
         if (lockFlag == 1) lockFlag = 0
         return super.onKeyUp(keyCode, event)
     }
 
-    private fun handleBack(ev: KeyEvent): Boolean {
+   /* private fun handleBack(ev: KeyEvent): Boolean {
         ic!!.sendKeyEvent(ev)
-        // requestHideSelf(0)
+        requestHideSelf(0)
         ic!!.sendKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK))
         ic!!.sendKeyEvent(KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK))
         return false
     }
-
+*/
     private fun handleDelete(ev: KeyEvent): Boolean {
         resetRotator()
         if (ic == null) {
