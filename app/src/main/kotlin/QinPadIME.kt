@@ -162,7 +162,14 @@ class QinPadIME : InputMethodService() {
 
     override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            return true
+             fun handleBack(ev: KeyEvent): Boolean {
+                ic!!.sendKeyEvent(ev)
+                // requestHideSelf(0)
+                ic!!.sendKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK))
+                ic!!.sendKeyEvent(KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK))
+                return false
+            }
+            handleBack(event)
         }
         if (lockFlag == 1) lockFlag = 0
         return super.onKeyUp(keyCode, event)
@@ -170,7 +177,7 @@ class QinPadIME : InputMethodService() {
 
     private fun handleBack(ev: KeyEvent): Boolean {
         ic!!.sendKeyEvent(ev)
-        requestHideSelf(0)
+        // requestHideSelf(0)
         ic!!.sendKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK))
         ic!!.sendKeyEvent(KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK))
         return false
