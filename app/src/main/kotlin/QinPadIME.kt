@@ -26,16 +26,16 @@ class QinPadIME : InputMethodService() {
     private val layoutIconsCaps = arrayOf(R.drawable.ime_hebrew_caps, R.drawable.ime_latin_caps, R.drawable.ime_numbers_normal)
     private val layouts = arrayOf(
         arrayOf( //hebrew
-            " ", ".,?!'\"1-~@/:\\+_\$#()[]{}",
-            "ש", "נ", "ב",
-            "ג", "ק", "כ", "ע",
-            "י", "ן", "ח", "ל", "ך", "צ", "מ", "ם", "פ", "ת","ר", "ד", "א" ,"ו", "ה", "ףץ", "ס", "ט", "ז", "\n"
+            " ", "\$€₪%^&'~/#<>[]{}",
+            "ש@", "נ.", "ב8",
+            "ג5", "ק2", "כ6", "ע*",
+            "י#", "ן_", "ח+", "ל\"", "ך'", "צ?", "מ,", "ם/", "פ:", "ת0","ר3", "ד4", "א)" ,"ו-", "ה9", "ףץ1", "ס7", "ט(", "ז!", "\n"
         ),
-        arrayOf( //latin
-            " ", ".,?!'\"1-~@/:\\+_\$#()[]{}",
-            "a", "b", "c",
-            "d", "e", "f", "g",
-            "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t" ,"u", "v", "w", "x", "y", "z", "\n"
+        arrayOf( //English
+            " ", "\$€₪%^&'~/#<>[]{}",
+            "a@", "b.", "c8",
+            "d5", "e2", "f6", "g*",
+            "h#", "i_", "j+", "k\"", "l'", "m?", "n,", "o/", "p:", "q0","r3", "s4", "t(" ,"u-", "v9", "w1'", "x7", "y)", "z!", "\n"
         )
     )
     private var currentLayout: Array<String>? = null
@@ -43,7 +43,7 @@ class QinPadIME : InputMethodService() {
     private fun resetRotator() {
         rotIndex = 0
         rotationMode = false
-        cachedDigit = 10
+        cachedDigit = 29
     }
 
     private fun updateCurrentStatusIcon() {
